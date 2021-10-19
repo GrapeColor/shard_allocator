@@ -11,18 +11,20 @@ var Status;
     function initialize(shard) {
         if (!environments_1.POST_STATUS_ENDPOINT || !environments_1.POST_STATUS_TOKEN || !environments_1.POST_STATUS_INTERVAL)
             return;
-        setInterval(() => postStatus(shard, environments_1.POST_STATUS_ENDPOINT, environments_1.POST_STATUS_TOKEN), environments_1.POST_STATUS_INTERVAL);
+        setInterval(() => postStatus(shard, environments_1.POST_STATUS_ENDPOINT, environments_1.POST_STATUS_TOKEN).catch(console.error), environments_1.POST_STATUS_INTERVAL);
     }
     Status.initialize = initialize;
-    function postStatus(shard, url, token) {
-        (0, axios_1.default)({
+    async function postStatus(shard, url, token) {
+        const payload = await generatePayload(shard);
+        if (!payload)
+            return;
+        const response = await (0, axios_1.default)({
             method: 'POST',
             url: url,
             headers: { 'Authorization': `Bearer ${token}` },
-            data: generatePayload(shard),
-        })
-            .then(response => shard.send(response))
-            .catch(console.error);
+            data: payload,
+        });
+        await shard.send(response);
     }
     async function generatePayload(shard) {
         const shardCount = (await shard.eval(client => client.options.shardCount));
@@ -30,7 +32,7 @@ var Status;
         const wsStatus = (await shard.eval(client => client.ws.status));
         const guildCount = (await shard.eval(client => client.guilds.cache.size));
         const userCount = (await shard.eval(client => countUser(client)));
-        if (!shardCount || !wsStatus || !guildCount || !userCount)
+        if (!shardCount)
             return null;
         return {
             shardCount,

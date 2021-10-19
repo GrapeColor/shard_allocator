@@ -16,30 +16,33 @@ export namespace Status {
     if (!POST_STATUS_ENDPOINT || !POST_STATUS_TOKEN || !POST_STATUS_INTERVAL) return;
 
     setInterval(
-      () => postStatus(shard, POST_STATUS_ENDPOINT, POST_STATUS_TOKEN),
+      () => postStatus(shard, POST_STATUS_ENDPOINT, POST_STATUS_TOKEN).catch(console.error),
       POST_STATUS_INTERVAL,
     );
   }
 
-  function postStatus(shard: Shard, url: string, token: string): void {
-    axios({
-      method: 'POST',
-      url: url,
+  async function postStatus(shard: Shard, url: string, token: string): Promise<void> {
+    const payload = await generatePayload(shard);
+    if (!payload) return;
+
+    const response = await axios({
+      method : 'POST',
+      url    : url,
       headers: { 'Authorization': `Bearer ${token}` },
-      data: generatePayload(shard),
-    })
-      .then(response => shard.send(response))
-      .catch(console.error);
+      data   : payload,
+    });
+
+    await shard.send(response);
   }
 
   async function generatePayload(shard: Shard): Promise<PostingPayload | null> {
     const shardCount = (await shard.eval(client => client.options.shardCount)) as unknown as number | undefined;
     const shardId    = shard.id;
-    const wsStatus   = (await shard.eval(client => client.ws.status)) as unknown as number | undefined;
-    const guildCount = (await shard.eval(client => client.guilds.cache.size)) as unknown as number | undefined;
-    const userCount  = (await shard.eval(client => countUser(client))) as unknown as number | undefined;
+    const wsStatus   = (await shard.eval(client => client.ws.status)) as unknown as number;
+    const guildCount = (await shard.eval(client => client.guilds.cache.size)) as unknown as number;
+    const userCount  = (await shard.eval(client => countUser(client))) as unknown as number;
 
-    if (!shardCount || !wsStatus || !guildCount || !userCount) return null;
+    if (!shardCount) return null;
 
     return {
       shardCount,

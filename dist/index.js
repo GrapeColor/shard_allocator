@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const environments_1 = require("./environments");
+const status_1 = require("./status");
 const manager = new discord_js_1.ShardingManager(environments_1.BOT_PATH, {
     token: environments_1.DISCORD_TOKEN,
     totalShards: environments_1.BOT_TOTAL_SHARDS,
@@ -9,6 +10,7 @@ const manager = new discord_js_1.ShardingManager(environments_1.BOT_PATH, {
 });
 manager.on('shardCreate', shard => {
     console.info(`Spawned shard ${shard.id + 1}/${manager.totalShards}.`);
+    status_1.Status.initialize(shard);
 });
 console.info('Start spawning shards.');
 manager.spawn({ timeout: -1 })
