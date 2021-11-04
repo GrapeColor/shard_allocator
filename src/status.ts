@@ -36,13 +36,13 @@ export namespace Status {
   }
 
   async function generatePayload(shard: Shard): Promise<PostingPayload | null> {
-    const shardCount = (await shard.eval(client => client.options.shardCount)) as unknown as number | undefined;
+    const shardCount = await shard.eval(client => client.options.shardCount);
     const shardId    = shard.id;
-    const wsStatus   = (await shard.eval(client => client.ws.status)) as unknown as number;
-    const guildCount = (await shard.eval(client => client.guilds.cache.size)) as unknown as number;
-    const userCount  = (await shard.eval(client => countUser(client))) as unknown as number;
+    const wsStatus   = await shard.eval(client => client.ws.status);
+    const guildCount = await shard.eval(client => client.guilds.cache.size);
+    const userCount  = await shard.eval(client => countUser(client));
 
-    if (!shardCount) return null;
+    if (!shardCount || !wsStatus || !guildCount || !userCount) return null;
 
     return {
       shardCount,
