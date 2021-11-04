@@ -27,12 +27,12 @@ var Status;
         await shard.send(response);
     }
     async function generatePayload(shard) {
-        const shardCount = (await shard.eval(client => client.options.shardCount));
+        const shardCount = await shard.eval(client => client.options.shardCount);
         const shardId = shard.id;
-        const wsStatus = (await shard.eval(client => client.ws.status));
-        const guildCount = (await shard.eval(client => client.guilds.cache.size));
-        const userCount = (await shard.eval(client => countUser(client)));
-        if (!shardCount)
+        const wsStatus = await shard.eval(client => client.ws.status);
+        const guildCount = await shard.eval(client => client.guilds.cache.size);
+        const userCount = await shard.eval(client => countUser(client));
+        if (!shardCount || !wsStatus || !guildCount || !userCount)
             return null;
         return {
             shardCount,
