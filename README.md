@@ -9,6 +9,11 @@ npx sharding YOUR_BOT_PATH YOUR_BOT_TOKEN
 ```
 
 ## Environments
+
+### BOT_PATH
+Relative path of your bot.  
+When you specify this, you do not need to specify a path in the command.  
+
 ### DISCORD_TOKEN
 Discord bot token.  
 When you specify this, you do not need to specify a token in the command.  
