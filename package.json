@@ -1,5 +1,5 @@
 {
-  "name": "shard_allocator",
+  "name": "shards_supplier",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.22.0",
-    "discord.js": "^13.2.0"
+    "discord.js": "^13.3.1"
   },
   "devDependencies": {
     "@types/node": "^16.10.3",
