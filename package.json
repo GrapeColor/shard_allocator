@@ -11,7 +11,7 @@
     "clean": "rimraf ./dist"
   },
   "bin": {
-    "sharding": "./dist/index.js"
+    "sharding": "dist/index.js"
   },
   "keywords": [],
   "author": "GrapeColor",
