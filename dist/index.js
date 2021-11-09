@@ -1,5 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const discord_js_1 = require("discord.js");
 const environments_1 = require("./environments");
 const status_1 = require("./status");
@@ -13,6 +18,6 @@ manager.on('shardCreate', shard => {
     status_1.Status.initialize(shard);
 });
 console.info('Start spawning shards.');
-manager.spawn({ timeout: -1 })
+manager.spawn({ timeout: 60000 })
     .then(() => console.info('All shards were successfully spawned.'))
     .catch(console.error);
