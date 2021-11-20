@@ -1,7 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BOT_SHARD_LIST = exports.BOT_TOTAL_SHARDS = exports.DISCORD_TOKEN = exports.BOT_PATH = void 0;
-exports.BOT_PATH = process.argv[2] ?? process.env['BOT_PATH'] ?? '';
-exports.DISCORD_TOKEN = process.argv[3] ?? process.env['DISCORD_TOKEN'] ?? '';
-exports.BOT_TOTAL_SHARDS = Number(process.env['BOT_TOTAL_SHARDS']) || 'auto';
-exports.BOT_SHARD_LIST = process.env['BOT_SHARD_LIST']?.split(',').map(Number) ?? 'auto';
+exports.SHARD_LIST = exports.TOTAL_SHARDS = exports.DISCORD_TOKEN = exports.BOT_PATH = void 0;
+exports.BOT_PATH = (() => {
+    const path = process.argv.at(2) ?? process.env['BOT_PATH'];
+    if (!path)
+        throw new RangeError('The "BOT_PATH" environment is not specified.');
+    return path;
+})();
+exports.DISCORD_TOKEN = (() => {
+    const token = process.argv.at(3) ?? process.env['DISCORD_TOKEN'];
+    if (!token)
+        throw new RangeError('The "DISCORD_TOKEN" environment is not specified.');
+    return token;
+})();
+;
+exports.TOTAL_SHARDS = Number(process.argv.at(4) ?? process.env['BOT_TOTAL_SHARDS']) || 'auto';
+exports.SHARD_LIST = (process.argv.at(5) ?? process.env['BOT_SHARD_LIST'])?.split(',').map(Number) ?? 'auto';

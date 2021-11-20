@@ -4,14 +4,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { ShardingManager } from 'discord.js';
-import { BOT_PATH, BOT_SHARD_LIST, BOT_TOTAL_SHARDS, DISCORD_TOKEN } from './environments';
+import { BOT_PATH, SHARD_LIST, TOTAL_SHARDS, DISCORD_TOKEN } from './environments';
 
 const manager = new ShardingManager(
   BOT_PATH,
   {
     token: DISCORD_TOKEN,
-    totalShards: BOT_TOTAL_SHARDS,
-    shardList: BOT_SHARD_LIST,
+    totalShards: TOTAL_SHARDS,
+    shardList: SHARD_LIST,
   },
 );
 
