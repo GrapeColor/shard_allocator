@@ -5,7 +5,6 @@ dotenv.config();
 
 import { ShardingManager } from 'discord.js';
 import { BOT_PATH, BOT_SHARD_LIST, BOT_TOTAL_SHARDS, DISCORD_TOKEN } from './environments';
-import { Status } from './status';
 
 const manager = new ShardingManager(
   BOT_PATH,
@@ -17,9 +16,7 @@ const manager = new ShardingManager(
 );
 
 manager.on('shardCreate', shard => {
-  console.info(`Spawned shard ${shard.id + 1}/${manager.totalShards}.`);
-
-  Status.initialize(shard);
+  console.info(`Shard ${shard.id + 1}/${manager.totalShards} spawned.`);
 });
 
 console.info('Start spawning shards.');

@@ -26,15 +26,3 @@ When not specified, it will be assigned automatically.
 The shard number assigned to the bot.  
 Please specify by separating with `,`.  
 When not specified, it will be assigned automatically.  
-
-### POST_STATUS_ENDPOINT
-Specify the endpoint to post the status for each shard.  
-Read the code for more information.  
-
-### POST_STATUS_TOKEN
-Specify the bearer token when posting the status to the endpoint.  
-Read the code for more information.  
-
-### POST_STATUS_INTERVAL
-Specify the interval for posting status in milliseconds.  
-Read the code for more information.  
