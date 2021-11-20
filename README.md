@@ -1,4 +1,4 @@
-# Shards Supplier
+# Shards Allocater
 This is a tool for sharding bots made with [discord.js](https://github.com/discordjs/discord.js).  
 
 ## How to use
