@@ -1,5 +1,5 @@
 # Shards Allocater
-This is a tool for sharding bots made with [discord.js](https://github.com/discordjs/discord.js).  
+This is a tool for sharding a bot made with [discord.js](https://github.com/discordjs/discord.js).  
 
 ## How to use
 Specify the bot's relative path and token on the command line.  
