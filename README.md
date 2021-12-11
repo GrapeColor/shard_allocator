@@ -6,14 +6,11 @@ Specify the bot's relative path and token on the command line.
 You can optionally specify a total shard and a shard list.  
 
 ```sh
-npx sharding BOT_PATH DISCORD_TOKEN [TOTAL_SHARDS [SHARD_LIST]]
+npx sharding BOT_PATH [DISCORD_TOKEN [TOTAL_SHARDS [SHARD_LIST]]]
 ```
 
 ## Environments
 When you specify these, you do not need to specify the values in the command.  
-
-### BOT_PATH
-Relative path of your bot.  
 
 ### DISCORD_TOKEN
 Discord bot token.  
