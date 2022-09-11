@@ -3,8 +3,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+import { BOT_PATH, DISCORD_TOKEN, SHARD_LIST, TOTAL_SHARDS } from './environments';
 import { ShardingManager } from 'discord.js';
-import { BOT_PATH, SHARD_LIST, TOTAL_SHARDS, DISCORD_TOKEN } from './environments';
 
 const manager = new ShardingManager(
   BOT_PATH,
@@ -15,7 +15,7 @@ const manager = new ShardingManager(
   },
 );
 
-manager.on('shardCreate', shard => {
+manager.on('shardCreate', (shard) => {
   console.info(`Shard ${shard.id + 1}/${manager.totalShards} spawned.`);
 });
 
