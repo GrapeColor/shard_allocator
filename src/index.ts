@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { BOT_PATH, DISCORD_TOKEN, SHARD_LIST, TOTAL_SHARDS } from './environments';
 import { ShardingManager } from 'discord.js';
 
