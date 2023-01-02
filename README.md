@@ -15,11 +15,11 @@ When you specify these, you do not need to specify the values in the command.
 ### DISCORD_TOKEN
 Discord bot token.  
 
-### TOTAL_SHARDS
+### TOTAL_SHARDS(optional)
 The number of bot shards.  
 When not specified, it will be assigned automatically.  
 
-### SHARD_LIST
+### SHARD_LIST(optional)
 The shard number assigned to the bot.  
 Please specify by separating with `,`.  
 When not specified, it will be assigned automatically.  
