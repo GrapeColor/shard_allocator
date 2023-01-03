@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SHARD_LIST = exports.TOTAL_SHARDS = exports.DISCORD_TOKEN = exports.BOT_PATH = void 0;
+exports.SHARD_LIST = exports.TOTAL_SHARDS = exports.DISCORD_TOKEN = exports.BOT_PATH = exports.LOGGING_LEVEL = void 0;
+exports.LOGGING_LEVEL = process.env['LOGGING_LEVEL'] ?? 'info';
 exports.BOT_PATH = ((path) => {
     if (!path) {
         throw new RangeError('The "BOT_PATH" is not specified.');

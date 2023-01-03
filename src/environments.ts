@@ -1,3 +1,5 @@
+export const LOGGING_LEVEL: string = process.env['LOGGING_LEVEL'] ?? 'info';
+
 export const BOT_PATH: string = ((path?: string) => {
   if (!path) {
     throw new RangeError('The "BOT_PATH" is not specified.');

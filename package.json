@@ -1,6 +1,6 @@
 {
   "name": "shards-allocater",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,14 +18,15 @@
   "author": "GrapeColor",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.6.0"
+    "discord.js": "*",
+    "log4js": "*"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
-    "dotenv": "^16.0.3",
-    "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "@types/node": "*",
+    "dotenv": "*",
+    "npm-run-all": "*",
+    "rimraf": "*",
+    "ts-node": "*",
+    "typescript": "*"
   }
 }
