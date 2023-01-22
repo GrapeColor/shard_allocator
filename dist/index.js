@@ -16,7 +16,7 @@ log4js_1.default.configure({
         default: { appenders: [logName], level: environments_1.LOGGING_LEVEL },
     },
 });
-const logger = log4js_1.default.getLogger();
+const logger = log4js_1.default.getLogger(logName);
 const manager = new discord_js_1.ShardingManager(environments_1.BOT_PATH, {
     token: environments_1.DISCORD_TOKEN,
     totalShards: environments_1.TOTAL_SHARDS,

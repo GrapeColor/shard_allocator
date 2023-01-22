@@ -15,7 +15,7 @@ log4js.configure({
   },
 });
 
-const logger = log4js.getLogger();
+const logger = log4js.getLogger(logName);
 
 const manager = new ShardingManager(
   BOT_PATH,
